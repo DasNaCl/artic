@@ -1,11 +1,11 @@
 /* inspired from impala version. */
 
-#[import(cc = "C")] fn atoi(&[u8]) -> i32;
-#[import(cc = "C")] fn drand48() -> f64;
-#[import(cc = "C")] fn sqrt(f64) -> f64;
-#[import(cc = "C")] fn fabs(f64) -> f64;
-#[import(cc = "C")] fn cos(f64) -> f64;
-#[import(cc = "C")] fn sin(f64) -> f64;
+#[import(cc = "C", name = "crt_atoi")]  fn atoi(&[u8]) -> i32;
+#[import(cc = "C", name = "crt_drand")] fn drand48() -> f64;
+#[import(cc = "C", name = "crt_sqrt")]  fn sqrt(f64) -> f64;
+#[import(cc = "C", name = "crt_fabs")]  fn fabs(f64) -> f64;
+#[import(cc = "C", name = "crt_cos")]   fn cos(f64) -> f64;
+#[import(cc = "C", name = "crt_sin")]   fn sin(f64) -> f64;
 #[import(cc = "C")] fn alloc_img(i32, i32) -> &mut [f64];
 #[import(cc = "C")] fn save_img(i32, i32, &[f64]) -> ();
 

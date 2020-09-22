@@ -2,6 +2,7 @@
 #include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 void write(const uint8_t* line, size_t size) {
     fwrite(line, size, 1, stdout);
@@ -49,6 +50,22 @@ void print_meteor_lines(const uint8_t* a) {
         a[5] + '0', a[6] + '0', a[7] + '0', a[8] + '0', a[9] + '0');
 }
 
+int32_t crt_atoi(uint8_t* str) { return atoi(str); }
+
+double crt_drand() {
+#ifdef _MSC_VER
+	// TODO: polyfill needed
+	return 0.;
+#else
+	return drand48();
+#endif // _MSC_VER
+}
+
+double crt_sqrt(double x) { return sqrt(x); }
+double crt_fabs(double x) { return fabs(x); }
+double crt_cos(double x) { return cos(x); }
+double crt_sin(double x) { return sin(x); }
+
 double* alloc_img(int32_t w, int32_t h) {
     return calloc(sizeof(double), w * h * 3);
 }
@@ -57,7 +74,7 @@ static inline uint8_t convert_col(double col) {
     col *= 255.0;
     if (col < 0) col = 0;
     if (col > 255) col = 255;
-    return col;
+    return (uint8_t)col;
 }
 
 void save_img(int32_t w, int32_t h, const double* img) {
