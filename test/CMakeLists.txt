@@ -1,4 +1,4 @@
-add_library(test_helpers SHARED codegen/helpers.c)
+add_library(test_helpers SHARED codegen/helpers.cpp)
 set_target_properties(test_helpers PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
